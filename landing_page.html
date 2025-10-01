@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresiones 3D al Por Mayor - Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .cart-badge {
+            animation: bounce 0.3s ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">3D</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Martel</h1>
+                </div>
+                <button onclick="toggleCart()" class="relative bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                    🛒 Carrito
+                    <span id="cartBadge" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-sm flex items-center justify-center cart-badge hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Products Section -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Impresiones 3D al Por Mayor</h2>
+                    <p class="text-gray-600 mb-6">Precios especiales para pedidos grandes. Mínimo 50 unidades por producto.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Product 1 -->
+                        <div class="product-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+                            <div class="text-6xl mb-4 text-center">🔑</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Llaveros de Boca</h3>
+                            <p class="text-gray-600 mb-4">Llaveros en PLA de alta calidad.</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">50-99 unidades:</span>
+                                    <span class="font-semibold">$1.300 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">100-499 unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.250 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">500+ unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.200 c/u</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <label class="text-sm font-medium">Cantidad:</label>
+                                <input type="number" id="qty1" min="50" value="50" class="w-20 px-2 py-1 border rounded">
+                            </div>
+                            <button onclick="addToCart('llaveros', 'Llaveros Personalizados')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+
+                        <div class="product-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+                            <div class="text-6xl mb-4 text-center">🔑</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Llaveros de River</h3>
+                            <p class="text-gray-600 mb-4">Llaveros en PLA de alta calidad.</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">50-99 unidades:</span>
+                                    <span class="font-semibold">$1.300 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">100-499 unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.250 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">500+ unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.200 c/u</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <label class="text-sm font-medium">Cantidad:</label>
+                                <input type="number" id="qty1" min="50" value="50" class="w-20 px-2 py-1 border rounded">
+                            </div>
+                            <button onclick="addToCart('llaveros', 'Llaveros Personalizados')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+
+
+                        <div class="product-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+                            <div class="text-6xl mb-4 text-center">🔑</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Llaveros de Argentina</h3>
+                            <p class="text-gray-600 mb-4">Llaveros en PLA de alta calidad.</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">50-99 unidades:</span>
+                                    <span class="font-semibold">$1.300 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">100-499 unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.250 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">500+ unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.200 c/u</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <label class="text-sm font-medium">Cantidad:</label>
+                                <input type="number" id="qty1" min="50" value="50" class="w-20 px-2 py-1 border rounded">
+                            </div>
+                            <button onclick="addToCart('llaveros', 'Llaveros Personalizados')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                        <!-- Product 2 -->
+                        <div class="product-card bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border border-green-200">
+                            <div class="text-6xl mb-4 text-center">💻</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Stand de notebook</h3>
+                            <p class="text-gray-600 mb-4">Stand de notebook resistente y adaptable</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">20-49 unidades:</span>
+                                    <span class="font-semibold">$3.600 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">50-99 unidades:</span>
+                                    <span class="font-semibold text-green-600">$3.400 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">100+ unidades:</span>
+                                    <span class="font-semibold text-green-600">$3.200 c/u</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <label class="text-sm font-medium">Cantidad:</label>
+                                <input type="number" id="qty2" min="50" value="50" class="w-20 px-2 py-1 border rounded">
+                            </div>
+                            <button onclick="addToCart('etiquetas', 'Etiquetas de Equipaje')" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border border-purple-200">
+                            <div class="text-6xl mb-4 text-center">🔌</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Organizador de cables</h3>
+                            <p class="text-gray-600 mb-4">Organizador de cables adaptable</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">40-79 unidades:</span>
+                                    <span class="font-semibold">$1.800 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">80-139 unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.680 c/u</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">140+ unidades:</span>
+                                    <span class="font-semibold text-green-600">$1.560 c/u</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <label class="text-sm font-medium">Cantidad:</label>
+                                <input type="number" id="qty3" min="50" value="50" class="w-20 px-2 py-1 border rounded">
+                            </div>
+                            <button onclick="addToCart('souvenirs', 'Souvenirs Corporativos')" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Sidebar -->
+            <div class="lg:col-span-1">
+                <div id="cartSidebar" class="bg-white rounded-xl shadow-lg p-6 sticky top-24">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        🛒 Tu Carrito
+                        <span class="ml-2 text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">DEMO</span>
+                    </h3>
+                    <div id="cartItems" class="space-y-3 mb-6">
+                        <p class="text-gray-500 text-center py-8">Tu carrito está vacío</p>
+                    </div>
+                    <div id="cartSummary" class="border-t pt-4 hidden">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm text-gray-600">Envío:</span>
+                            <span class="text-sm">Cotizar</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-lg border-t pt-2">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                        <button onclick="showCheckout()" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-lg font-semibold mt-4 transition-all">
+                            Proceder al Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                        Checkout
+                        <span class="ml-3 text-sm bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">DEMO - No se procesarán pagos reales</span>
+                    </h2>
+                    <button onclick="closeCheckout()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+
+                <form onsubmit="processOrder(event)" class="space-y-6">
+                    <!-- Order Summary -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-semibold mb-3">Resumen del Pedido</h3>
+                        <div id="checkoutItems"></div>
+                        <div class="border-t pt-3 mt-3">
+                            <div class="flex justify-between font-bold">
+                                <span>Total:</span>
+                                <span id="checkoutTotal">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <h3 class="font-semibold mb-3">Información de Contacto</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nombre completo" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="email" placeholder="Email" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="tel" placeholder="Teléfono" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" placeholder="Empresa" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <!-- Shipping Address -->
+                    <div>
+                        <h3 class="font-semibold mb-3">Dirección de Envío</h3>
+                        <div class="space-y-4">
+                            <input type="text" placeholder="Dirección" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <input type="text" placeholder="Ciudad" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <input type="text" placeholder="Estado/Provincia" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <input type="text" placeholder="Código Postal" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Instructions -->
+                    <div>
+                        <h3 class="font-semibold mb-3">Instrucciones Especiales</h3>
+                        <textarea placeholder="Detalles de personalización, colores específicos, etc." rows="3" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <p class="text-sm text-blue-800">
+                            <strong>Nota:</strong> Este es un formulario de demostración. En un sitio real, aquí se integraría con un procesador de pagos como Stripe o PayPal para manejar los pagos de forma segura.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white py-3 rounded-lg font-semibold transition-all">
+                        Enviar Cotización (Demo)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 text-center">
+            <div class="text-6xl mb-4">✅</div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">¡Cotización Enviada!</h2>
+            <p class="text-gray-600 mb-6">Hemos recibido tu solicitud. Te contactaremos en las próximas 24 horas con una cotización detallada y tiempos de entrega.</p>
+            <button onclick="closeSuccess()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold">
+                Continuar Comprando
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        const products = {
+            llaveros: { prices: { 50: 1300, 100: 1250, 500: 1200 }, minQty: 50 },
+            etiquetas: { prices: { 20: 3600, 50: 3400, 100: 3200 }, minQty: 20 },
+            souvenirs: { prices: { 40: 1800, 80: 1680, 140: 1560 }, minQty: 40 },
+            soportes: { prices: { 50: 5.00, 100: 4.50, 500: 4.00 }, minQty: 50 }
+        };
+
+        function getPrice(productId, quantity) {
+            const product = products[productId];
+            if (productId === 'llaveros') {
+                if (quantity >= 500) return product.prices[500];
+                if (quantity >= 100) return product.prices[100];
+                return product.prices[50];
+            } else if (productId === 'etiquetas') {
+                if (quantity >= 100) return product.prices[100];
+                if (quantity >= 50) return product.prices[50];
+                return product.prices[20];
+            } else if (productId === 'souvenirs') {
+                if (quantity >= 140) return product.prices[140];
+                if (quantity >= 80) return product.prices[80];
+                return product.prices[40];
+            } else if (productId === 'soportes') {
+                if (quantity >= 500) return product.prices[500];
+                if (quantity >= 100) return product.prices[100];
+                return product.prices[50];
+            }
+        }
+
+        function addToCart(productId, productName) {
+            const qtyInput = document.getElementById(`qty${productId === 'llaveros' ? '1' : productId === 'etiquetas' ? '2' : productId === 'souvenirs' ? '3' : '4'}`);
+            const quantity = parseInt(qtyInput.value);
+            const minQty = products[productId].minQty;
+            
+            if (quantity < minQty) {
+                alert(`La cantidad mínima para ${productName} es ${minQty} unidades`);
+                return;
+            }
+
+            const price = getPrice(productId, quantity);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+                existingItem.total = existingItem.quantity * getPrice(productId, existingItem.quantity);
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    quantity: quantity,
+                    price: price,
+                    total: quantity * price
+                });
+            }
+            
+            updateCartDisplay();
+            qtyInput.value = minQty;
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartBadge = document.getElementById('cartBadge');
+            const cartSummary = document.getElementById('cartSummary');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Tu carrito está vacío</p>';
+                cartBadge.classList.add('hidden');
+                cartSummary.classList.add('hidden');
+                return;
+            }
+
+            cartBadge.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.classList.remove('hidden');
+            cartSummary.classList.remove('hidden');
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <div class="flex-1">
+                        <h4 class="font-medium text-sm">${item.name}</h4>
+                        <p class="text-xs text-gray-600">${item.quantity} unidades × $${getPrice(item.id, item.quantity).toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="font-semibold text-sm">$${(item.quantity * getPrice(item.id, item.quantity)).toFixed(2)}</span>
+                        <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 text-sm">×</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.quantity * getPrice(item.id, item.quantity)), 0);
+            document.getElementById('subtotal').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            // Cart is always visible in sidebar, this could scroll to it on mobile
+            document.getElementById('cartSidebar').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showCheckout() {
+            if (cart.length === 0) return;
+            
+            const checkoutItems = document.getElementById('checkoutItems');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            
+            checkoutItems.innerHTML = cart.map(item => `
+                <div class="flex justify-between text-sm mb-2">
+                    <span>${item.name} (${item.quantity} unidades)</span>
+                    <span>$${(item.quantity * getPrice(item.id, item.quantity)).toFixed(2)}</span>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.quantity * getPrice(item.id, item.quantity)), 0);
+            checkoutTotal.textContent = `$${total.toFixed(2)}`;
+            
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function processOrder(event) {
+            event.preventDefault();
+            closeCheckout();
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccess() {
+            document.getElementById('successModal').classList.add('hidden');
+            cart = [];
+            updateCartDisplay();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'987b4def9511ba79',t:'MTc1OTMxNDgzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
